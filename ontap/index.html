@@ -20,9 +20,10 @@
 <div id="total"></div>
 <div id="result"></div>
 <script>
+    // Khai báo mảng students để lưu trữ danh sách học viên
     let students = [];
 
-    // function constructor
+    // Cách 1: định nghĩa lớp sử dụng function constructor
     function Student(code, name, email, address) {
         this.code = code;
         this.name = name;
@@ -30,7 +31,7 @@
         this.address = address;
     }
 
-    // class (es6)
+    // Cách 2: định nghĩa lớp sử dụng class (es6)
     class HocVien {
         constructor(code, name, email, address) {
             this.code = code;
@@ -40,7 +41,7 @@
         }
     }
 
-    // object literal
+    // Cách 3: sử dụng object literal
     students.push({
         code: 'CGVN006586',
         name: 'Trần Anh Dũng',
@@ -49,14 +50,15 @@
     });
     students.push(new Student('CGVN006646', 'Nguyễn Hoàng Lân', 'hoanglanhyh@gmail.com', 'Online'));
     students.unshift(new HocVien('CGVN006653', 'Đinh Văn Phương', 'vanphuong2058@gmail.com', 'Online'));
-    // students.shift();
-    // students.splice(1, 1);
+    // students.shift(); // xóa phần tử đầu của mảng
+    // students.splice(1, 1); // xóa 1 phần tử tại chỉ số 1
 
-    // Xóa phần tử có tên là Trần Anh Dũng
+    // Xóa phần tử có tên là Trần Anh Dũng sử dụng hàm filter
     // students = students.filter(function (item) {
     //     return item.name !== 'Trần Anh Dũng'
     // })
 
+    // Hàm dùng làm callback cho hàm .map()
     function showStudentList(item) {
         return `<tr>
             <td>${item.name}</td>
@@ -68,6 +70,7 @@
     const result = document.getElementById("result");
     document.getElementById("total").innerHTML = `<p>Tổng số học viên: ${students.length}</p>`;
     let table = '<table><tr><th>Mã học viên</th><th>Tên học viên</th><th>Email</th><th>Địa điểm học</th></tr>';
+    // cách 1: dùng forEach để duyệt mảng, nhược điểm là chỉ duyệt từ đầu mảng, ko duyệt ngược được
     // students.forEach(function (item) {
     //     table += `<tr>
     //         <td>${item.name}</td>
@@ -75,6 +78,7 @@
     //         <td>${item['address']}</td>
     //     </tr>`;
     // })
+    // cách 2: Dùng for để duyệt mảng, ưu điểm là có thể duyệt từ đầu hoặc duyệt từ cuối
     for (let i = 0; i < students.length; i++) {
         table += `<tr>
             <td>${students[i].code}</td>
