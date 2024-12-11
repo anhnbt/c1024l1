@@ -17,79 +17,40 @@
     </style>
 </head>
 <body>
-<div id="total"></div>
 <div id="result"></div>
 <script>
-    // Khai báo mảng students để lưu trữ danh sách học viên
-    let students = [];
-
-    // Cách 1: định nghĩa lớp sử dụng function constructor
-    function Student(code, name, email, address) {
-        this.code = code;
-        this.name = name;
-        this.email = email;
-        this.address = address;
-    }
-
-    // Cách 2: định nghĩa lớp sử dụng class (es6)
-    class HocVien {
-        constructor(code, name, email, address) {
+    let productList = [];
+    class Product {
+        constructor(code, name, price, quantity) {
             this.code = code;
             this.name = name;
-            this.email = email;
-            this.address = address;
+            this.price = price;
+            this.quantity = quantity;
         }
     }
 
-    // Cách 3: sử dụng object literal
-    students.push({
-        code: 'CGVN006586',
-        name: 'Trần Anh Dũng',
-        email: 'dungsat2909@gmail.com',
-        address: 'Online'
-    });
-    students.push(new Student('CGVN006646', 'Nguyễn Hoàng Lân', 'hoanglanhyh@gmail.com', 'Online'));
-    students.unshift(new HocVien('CGVN006653', 'Đinh Văn Phương', 'vanphuong2058@gmail.com', 'Online'));
-    // students.shift(); // xóa phần tử đầu của mảng
-    // students.splice(1, 1); // xóa 1 phần tử tại chỉ số 1
+    productList.push(new Product('Sp007', 'Pencil', 2000, 1));
 
-    // Xóa phần tử có tên là Trần Anh Dũng sử dụng hàm filter
-    // students = students.filter(function (item) {
-    //     return item.name !== 'Trần Anh Dũng'
-    // })
+    let table = `<table>
+        <tr>
+            <th>Mã sản phẩm</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá sản phẩm</th>
+            <th>Số lượng sản phẩm</th>
+        </tr>`;
 
-    // Hàm dùng làm callback cho hàm .map()
-    function showStudentList(item) {
-        return `<tr>
-            <td>${item.name}</td>
-            <td>${item['email']}</td>
-            <td>${item['address']}</td>
+    for (let i = 0; i < productList.length; i++) {
+        table += `<tr>
+            <td>${productList[i].code}</td>
+            <td>${productList[i].name}</td>
+            <td>${productList[i].price}</td>
+            <td>${productList[i].quantity}</td>
         </tr>`;
     }
+    table += `</table>`;
 
     const result = document.getElementById("result");
-    document.getElementById("total").innerHTML = `<p>Tổng số học viên: ${students.length}</p>`;
-    let table = '<table><tr><th>Mã học viên</th><th>Tên học viên</th><th>Email</th><th>Địa điểm học</th></tr>';
-    // cách 1: dùng forEach để duyệt mảng, nhược điểm là chỉ duyệt từ đầu mảng, ko duyệt ngược được
-    // students.forEach(function (item) {
-    //     table += `<tr>
-    //         <td>${item.name}</td>
-    //         <td>${item['email']}</td>
-    //         <td>${item['address']}</td>
-    //     </tr>`;
-    // })
-    // cách 2: Dùng for để duyệt mảng, ưu điểm là có thể duyệt từ đầu hoặc duyệt từ cuối
-    for (let i = 0; i < students.length; i++) {
-        table += `<tr>
-            <td>${students[i].code}</td>
-            <td>${students[i].name}</td>
-            <td>${students[i]['email']}</td>
-            <td>${students[i]['address']}</td>
-        </tr>`;
-    }
-    table += '</table>';
     result.innerHTML = table;
-    console.log(students);
 </script>
 </body>
 </html>

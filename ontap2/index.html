@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ôn tập 2</title>
+</head>
+<body>
+<!--table>tr>th*4-->
+<!--<table border="1">-->
+<!--    <tr>-->
+<!--        <th>Mã sản phẩm</th>-->
+<!--        <th>Tên sản phẩm</th>-->
+<!--        <th>Giá sản phẩm</th>-->
+<!--        <th>Số lượng</th>-->
+<!--    </tr>-->
+<!--</table>-->
+<div id="resultDiv"></div>
+<script>
+    const products = ['Apple Mac Mini M4', 'Samsung Galaxy ..'];
+    const resultDiv = document.getElementById("resultDiv");
+    let items = '<table border="1"><tr><th>Tên sản phẩm</th></tr>';
+    for (let i = 0; i < products.length; i++) {
+        items += "<tr><td>" + products[i] + "</td></tr>";
+    }
+    items += '</table>';
+    resultDiv.innerHTML = items;
+</script>
+</body>
+</html>
