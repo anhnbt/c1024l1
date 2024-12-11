@@ -3,6 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Ôn tập 2</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+        }
+
+        th {
+            background: blue;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 <!--table>tr>th*4-->
@@ -46,7 +61,7 @@
     phones.push(samsung);
     phones.push(new DienThoai('OP004', 'Oppo ..', 450, 25));
     const resultDiv = document.getElementById("resultDiv");
-    let items = '<table border="1"><tr><th>Mã sản phẩm</th><th>Tên sản phẩm</th><th>Giá</th><th>Số lượng</th></tr>';
+    let items = '<table><tr><th>Mã sản phẩm</th><th>Tên sản phẩm</th><th>Giá</th><th>Số lượng</th></tr>';
     for (let i = 0; i < phones.length; i++) {
         // template literal ` backtick
         // items += "<tr><td>" + products[i] + "</td></tr>";
